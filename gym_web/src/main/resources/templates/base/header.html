@@ -1,0 +1,59 @@
+<html xmlns:th="http://www.thymeleaf.org"
+>
+    <body>
+        <header class="main-header sidebar-mini" th:fragment="header">
+            <!-- Logo -->
+            <a href="#" class="logo" style="text-decoration:none">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>W</b>A</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg">Wormhole</span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+
+                <!--右侧部分开始-->
+                <div id="page-wrapper" class="gray-bg dashbard-1">
+                    <div class="row border-bottom">
+                        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+<!--                            <div class="navbar-header">-->
+<!--                                <a class="navbar-minimalize minimalize-styl-2" style="color:#FFF;" href="#" title="收起菜单">-->
+<!--                                    <i class="fa fa-bars"></i>-->
+<!--                                </a>-->
+<!--                            </div>-->
+                            <ul class="nav navbar-top-links navbar-right welcome-message">
+                                <li class="dropdown user-menu">
+                                    <a href="javascript:void(0)" class="dropdown-toggle" data-hover="dropdown" style="right: 30px">
+                                        <img th:src="(${user.avatar} == '') ? @{/static/img/user1-128x128.jpg} : @{${user.avatar}}" class="user-image" style="width: 30px">
+                                        <span class="hidden-xs">[[${user.userName}]]</span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="mt5">
+                                            <a th:href="@{/system/user/profile}" class="menuItem">
+                                                <i class="fa fa-user"></i> [[#{header.self}]]</a>
+                                        </li>
+                                        <li>
+                                            <a onclick="resetPwd()" class="menuItem">
+                                                <i class="fa fa-key"></i> [[#{header.changePassword}]]</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a th:href="@{logout}">
+                                                <i class="fa fa-sign-out"></i> [[#{header.logout}]]</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+            </nav>
+        </header>
+    </body>
+</html>

@@ -1,0 +1,15 @@
+/*.jumpto input {
+    height: 20px;
+    width: 5px;
+    margin: 0;
+    text-align: center;
+    display: inline;
+}*/
+
+.jumpto {
+    display: inline-block;
+    float:left;
+}
+.jumpto .button{
+    display: inline-block;
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('新增字典数据')" />
+</head>
+<body class="white-bg">
+	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+		<form class="form-horizontal m" id="form-dict-add">
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">[[#{common.dictLabel}]]：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="dictLabel" id="dictLabel" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">[[#{common.dictValue}]]：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="dictValue" id="dictValue" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">[[#{common.dictType}]]：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" id="dictType" name="dictType" readonly="true" th:value="${dictType}">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">[[#{common.cssClass}]]：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" id="cssClass" name="cssClass">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">[[#{common.dictSort}]]：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="dictSort" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">[[#{common.echoStyle}]]：</label>
+				<div class="col-sm-8">
+					<select name="listClass" class="form-control m-b">
+					    <option value="">---[[#{common.selection}]]---</option>
+	                    <option value="default">[[#{common.default}]]</option>
+	                    <option value="primary">[[#{common.primary}]]</option>
+	                    <option value="success">[[#{common.success}]]</option>
+	                    <option value="info">[[#{common.info}]]</option>
+	                    <option value="warning">[[#{common.warning}]]</option>
+	                    <option value="danger"> [[#{common.danger}]]</option>
+	                </select>
+	                <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> table table dictionary column display style attributes</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">[[#{System.default}]]：</label>
+				<div class="col-sm-8">
+				    <div class="radio-box" th:each="dict : ${@dict.getType('sys_yes_no')}">
+						<input type="radio" th:id="${dict.dictCode}" name="isDefault" th:value="${dict.dictValue}" th:checked="${dict.default}">
+						<label th:for="${dict.dictCode}" th:text="${dict.dictLabel}"></label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">[[#{common.dictStatus}]]：</label>
+				<div class="col-sm-8">
+				    <div class="radio-box" th:each="dict : ${@dict.getType('sys_normal_disable')}">
+						<input type="radio" th:id="${dict.dictCode}" name="status" th:value="${dict.dictValue}" th:checked="${dict.default}">
+						<label th:for="${dict.dictCode}" th:text="${dict.dictLabel}"></label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">[[#{common.remark}]]：</label>
+				<div class="col-sm-8">
+					<textarea id="remark" name="remark" class="form-control"></textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+	<th:block th:include="include :: footer" />
+	<script type="text/javascript">
+		var prefix = ctx + "system/dict/data";
+	
+		$("#form-dict-add").validate({
+			rules:{
+				dictSort:{
+					digits:true
+				},
+			},
+			focusCleanup: true
+		});
+		
+		function submitHandler() {
+	        if ($.validate.form()) {
+	        	$.operate.save(prefix + "/add", $('#form-dict-add').serialize());
+	        }
+	    }
+	</script>
+</body>
+</html>

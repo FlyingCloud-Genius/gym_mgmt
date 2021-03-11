@@ -1,0 +1,77 @@
+.asterisk {
+    font-style: normal;
+    color: red;
+}
+.admin-hide {
+    display: none;
+}
+.records {
+    color: red;
+    font-weight: bold;
+}
+[data-notify="container"] {
+    width: auto;
+}
+[data-notify="message"] {
+    padding-left:10px;
+    padding-right:10px;
+}
+
+body {
+    padding-right: 0px !important;
+}
+*.modal-open {
+    overflow-y: scroll;
+    padding-right: 0 !important;
+}
+
+.console-col-sm-6 {
+    width: 60%;
+    margin-left: 18%;
+}
+
+.console-col-sm-1{width:9.33333333%;margin-left: 18%;}
+
+.colStyle {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+    .col-console-sm-1 {
+        position: relative;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+        float: left;
+        width: 9.33333333%;
+    }
+
+    .col-console-sm-2 {
+        position: relative;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+        float: left;
+        width: 23.86666667%;
+    }
+}
+
+.form-console-control {
+    display: block;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}

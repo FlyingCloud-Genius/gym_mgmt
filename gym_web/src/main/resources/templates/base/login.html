@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>[[#{login.label}]]</title>
+    <meta name="description" th:content="#{common.wormhole}">
+    <link href="../static/css/css/bootstrap.min.css" th:href="@{/static/css/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link href="../static/css/css/font-awesome.min.css" th:href="@{/static/css/css/font-awesome.min.css}"
+          rel="stylesheet"/>
+    <link href="../static/css/css/style.css" th:href="@{/static/css/css/style.css}" rel="stylesheet"/>
+    <link href="../static/css/css/login.min.css" th:href="@{/static/css/css/login.min.css}" rel="stylesheet"/>
+    <link href="../static/js/ruoyi/css/ry-ui.css" th:href="@{/static/js/ruoyi/css/ry-ui.css?v=4.0.0}" rel="stylesheet"/>
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+    <style type="text/css">label.error {
+        position: inherit;
+    }</style>
+
+    <script>
+        if (window.top !== window.self) {
+            window.top.location = window.location
+        }
+        ;
+    </script>
+</head>
+
+<body class="signin" onload="getCookie();">
+
+<div class="signinpanel">
+    <div class="row">
+        <div class="col-sm-7">
+            <div class="signin-info">
+                <div class="m-b"></div>
+                <h4>[[#{login.welcome}]]</h4>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <form id="signupForm">
+                <h4 class="no-margins">[[#{login.label}]]：</h4>
+                <input type="text" name="username" class="form-control uname" th:placeholder="#{common.username}"/>
+                <input type="password" name="password" class="form-control pword" th:placeholder="#{common.password}"/>
+                <div class="row m-t" th:if="${captchaEnabled==true}">
+                    <div class="col-xs-6">
+                        <input type="text" name="validateCode" class="form-control code"
+                               th:placeholder="#{login.validationCode}" maxlength="5" autocomplete="off">
+                    </div>
+                    <div class="col-xs-6">
+                        <a href="javascript:void(0);" th:title="#{login.changeCapcha}">
+                            <img th:src="@{captcha/captchaImage(type=${captchaType})}" class="imgcode" width="85%"/>
+                        </a>
+                    </div>
+                </div>
+                <div class="checkbox-custom" th:classappend="${captchaEnabled==false} ? 'm-t'">
+                    <input type="checkbox" id="rememberme" name="rememberme"> <label for="rememberme">[[#{login.remember}]]</label>
+                </div>
+                <button class="btn btn-success btn-block" id="btnSubmit" th:data-loading="#{login.loading}">
+                    [[#{login.label}]]
+                </button>
+
+                <div class="row m-t">
+                    <!--                        <div class="col-xs-4">-->
+                    <!--                        <label for="language">Language：</label>-->
+                    <!--                            </div>-->
+                    <!--                        <div class="col-xs-6">-->
+                    <!--                        <select  onchange="changeLanguage()" class="form-control code"  id="language">-->
+                    <!--&lt;!&ndash;                            <option value="0">default</option>&ndash;&gt;-->
+                    <!--                            <option value="1">English</option>-->
+                    <!--                            <option value="2">Chinese</option>-->
+                    <!--                        </select></div>-->
+                    <a href="?lang=en_US"> 英语 </a>
+                    <a href="?lang=zh_CN"> 中文 </a>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+    <div class="signup-footer">
+        <div class="pull-left">
+            <strong>&copy; 2020,JDD Service Co., Limited. All rights reserved.</strong>
+
+        </div>
+    </div>
+</div>
+<script th:inline="javascript"> var ctx = [[@{
+    /}]]; var captchaType = [[${captchaType}]]; </script>
+<!-- 全局js -->
+<script src="../static/js/jquery.min.js" th:src="@{/static/js/jquery.min.js}"></script>
+<script src="../static/js/bootstrap.min.js" th:src="@{/static/js/bootstrap.min.js}"></script>
+<!-- 验证插件 -->
+<script src="../static/js/validate/jquery.validate.min.js"
+        th:src="@{/static/js/validate/jquery.validate.min.js}"></script>
+<!--<script src="../static/js/validate/messages_zh.min.js" th:src="@{/static/js/validate/messages_zh.min.js}"></script>-->
+<script src="../static/js/layer/layer.min.js" th:src="@{/static/js/layer/layer.min.js}"></script>
+<script src="../static/js/blockUI/jquery.blockUI.js" th:src="@{/static/js/blockUI/jquery.blockUI.js}"></script>
+<script src="../static/js/ruoyi/js/ry-ui.js" th:src="@{/static/js/ruoyi/js/ry-ui.js?v=4.0.0}"></script>
+<script src="../static/js/ruoyi/login.js" th:src="@{/static/js/ruoyi/login.js}"></script>
+<script src="../static/js/ruoyi/jquery.cookie.js" th:src="@{/static/js/ruoyi/jquery.cookie.js}"></script>
+<script src="../static/js/ruoyi/jquery.base64.js" th:src="@{/static/js/ruoyi/jquery.base64.js}"></script>
+
+</body>
+</html>

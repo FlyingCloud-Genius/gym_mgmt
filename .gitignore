@@ -1,1 +1,9 @@
 /.idea/
+/gym_web/gym_web.iml
+/gym_common/target/
+/gym_dao/target/
+/gym_domain/target/
+/gym_web/target/
+/gym_service/target/
+/gym_project_mgmt.iml
+/null/avatar/2021/03/11/
