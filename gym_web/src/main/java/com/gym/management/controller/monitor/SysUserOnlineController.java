@@ -4,7 +4,7 @@ import com.gym.management.annotation.Log;
 import com.gym.management.controller.system.base.BaseController;
 import com.gym.management.domain.AjaxResult;
 import com.gym.management.domain.entity.ISysUserOnlineService;
-import com.gym.management.domain.entity.SysUserOnline;
+import com.gym.management.domain.entity.sys.SysUserOnline;
 import com.gym.management.enums.BusinessType;
 import com.gym.management.enums.OnlineStatus;
 import com.gym.management.page.TableDataInfo;

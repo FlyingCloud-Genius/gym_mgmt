@@ -2,7 +2,7 @@ package com.gym.management.domain.entity.impl;
 
 import com.gym.management.constant.UserConstants;
 import com.gym.management.domain.entity.ISysConfigService;
-import com.gym.management.domain.entity.SysConfig;
+import com.gym.management.domain.entity.sys.SysConfig;
 import com.gym.management.mapper.sys.SysConfigMapper;
 import com.gym.management.utils.Convert;
 import com.gym.management.utils.StringUtils;

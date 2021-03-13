@@ -7,7 +7,7 @@ import com.gym.management.controller.system.base.BaseController;
 import com.gym.management.domain.AjaxResult;
 import com.gym.management.domain.Ztree;
 import com.gym.management.domain.entity.ISysDictTypeService;
-import com.gym.management.domain.entity.SysDictType;
+import com.gym.management.domain.entity.sys.SysDictType;
 import com.gym.management.enums.BusinessType;
 import com.gym.management.page.TableDataInfo;
 import com.gym.management.poi.ExcelUtil;

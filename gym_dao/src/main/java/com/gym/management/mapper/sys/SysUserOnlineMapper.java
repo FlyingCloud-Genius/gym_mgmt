@@ -1,6 +1,6 @@
 package com.gym.management.mapper.sys;
 
-import com.gym.management.domain.entity.SysUserOnline;
+import com.gym.management.domain.entity.sys.SysUserOnline;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

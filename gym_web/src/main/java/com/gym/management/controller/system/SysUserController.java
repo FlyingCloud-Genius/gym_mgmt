@@ -7,7 +7,7 @@ import com.gym.management.domain.AjaxResult;
 import com.gym.management.domain.entity.ISysPostService;
 import com.gym.management.domain.entity.ISysRoleService;
 import com.gym.management.domain.entity.ISysUserService;
-import com.gym.management.domain.entity.SysUser;
+import com.gym.management.domain.entity.sys.SysUser;
 import com.gym.management.enums.BusinessType;
 import com.gym.management.page.TableDataInfo;
 import com.gym.management.poi.ExcelUtil;

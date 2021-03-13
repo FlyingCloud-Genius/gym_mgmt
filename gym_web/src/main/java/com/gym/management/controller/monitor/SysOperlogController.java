@@ -4,7 +4,7 @@ import com.gym.management.annotation.Log;
 import com.gym.management.controller.system.base.BaseController;
 import com.gym.management.domain.AjaxResult;
 import com.gym.management.domain.entity.ISysOperLogService;
-import com.gym.management.domain.entity.SysOperLog;
+import com.gym.management.domain.entity.sys.SysOperLog;
 import com.gym.management.enums.BusinessType;
 import com.gym.management.page.TableDataInfo;
 import com.gym.management.poi.ExcelUtil;

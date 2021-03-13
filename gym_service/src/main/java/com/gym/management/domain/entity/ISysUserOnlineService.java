@@ -1,5 +1,7 @@
 package com.gym.management.domain.entity;
 
+import com.gym.management.domain.entity.sys.SysUserOnline;
+
 import java.util.Date;
 import java.util.List;
 

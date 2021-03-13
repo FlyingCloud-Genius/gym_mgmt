@@ -1,5 +1,8 @@
 package com.gym.management.domain.entity;
 
+import com.gym.management.domain.entity.sys.SysRole;
+import com.gym.management.domain.entity.sys.SysUserRole;
+
 import java.util.List;
 import java.util.Set;
 

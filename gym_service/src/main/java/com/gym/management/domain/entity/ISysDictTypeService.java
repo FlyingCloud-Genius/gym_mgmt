@@ -1,6 +1,7 @@
 package com.gym.management.domain.entity;
 
 import com.gym.management.domain.Ztree;
+import com.gym.management.domain.entity.sys.SysDictType;
 
 import java.util.List;
 

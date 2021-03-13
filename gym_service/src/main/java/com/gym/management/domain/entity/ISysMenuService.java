@@ -1,6 +1,9 @@
 package com.gym.management.domain.entity;
 
 import com.gym.management.domain.Ztree;
+import com.gym.management.domain.entity.sys.SysMenu;
+import com.gym.management.domain.entity.sys.SysRole;
+import com.gym.management.domain.entity.sys.SysUser;
 
 import java.util.List;
 import java.util.Map;

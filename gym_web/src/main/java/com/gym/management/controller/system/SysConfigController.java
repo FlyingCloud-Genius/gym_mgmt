@@ -5,7 +5,7 @@ import com.gym.management.constant.UserConstants;
 import com.gym.management.controller.system.base.BaseController;
 import com.gym.management.domain.AjaxResult;
 import com.gym.management.domain.entity.ISysConfigService;
-import com.gym.management.domain.entity.SysConfig;
+import com.gym.management.domain.entity.sys.SysConfig;
 import com.gym.management.enums.BusinessType;
 import com.gym.management.page.TableDataInfo;
 import com.gym.management.poi.ExcelUtil;

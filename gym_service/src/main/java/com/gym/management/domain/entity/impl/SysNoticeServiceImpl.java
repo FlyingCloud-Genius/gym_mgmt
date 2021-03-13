@@ -1,7 +1,7 @@
 package com.gym.management.domain.entity.impl;
 
 import com.gym.management.domain.entity.ISysNoticeService;
-import com.gym.management.domain.entity.SysNotice;
+import com.gym.management.domain.entity.sys.SysNotice;
 import com.gym.management.mapper.sys.SysNoticeMapper;
 import com.gym.management.utils.Convert;
 import org.springframework.beans.factory.annotation.Autowired;

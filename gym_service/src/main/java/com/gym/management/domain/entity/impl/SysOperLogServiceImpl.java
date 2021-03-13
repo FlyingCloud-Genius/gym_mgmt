@@ -1,7 +1,7 @@
 package com.gym.management.domain.entity.impl;
 
 import com.gym.management.domain.entity.ISysOperLogService;
-import com.gym.management.domain.entity.SysOperLog;
+import com.gym.management.domain.entity.sys.SysOperLog;
 import com.gym.management.mapper.sys.SysOperLogMapper;
 import com.gym.management.utils.Convert;
 import org.springframework.beans.factory.annotation.Autowired;

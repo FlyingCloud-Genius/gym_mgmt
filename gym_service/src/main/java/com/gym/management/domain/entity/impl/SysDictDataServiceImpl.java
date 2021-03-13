@@ -1,7 +1,7 @@
 package com.gym.management.domain.entity.impl;
 
 import com.gym.management.domain.entity.ISysDictDataService;
-import com.gym.management.domain.entity.SysDictData;
+import com.gym.management.domain.entity.sys.SysDictData;
 import com.gym.management.mapper.sys.SysDictDataMapper;
 import com.gym.management.utils.Convert;
 import org.springframework.beans.factory.annotation.Autowired;

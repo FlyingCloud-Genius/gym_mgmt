@@ -1,7 +1,7 @@
 package com.gym.management.domain.entity.impl;
 
 import com.gym.management.domain.entity.ISysUserOnlineService;
-import com.gym.management.domain.entity.SysUserOnline;
+import com.gym.management.domain.entity.sys.SysUserOnline;
 import com.gym.management.mapper.sys.SysUserOnlineMapper;
 import com.gym.management.utils.DateUtils;
 import com.gym.management.utils.StringUtils;

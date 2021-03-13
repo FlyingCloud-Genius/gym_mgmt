@@ -1,7 +1,7 @@
 package com.gym.management.domain.entity.impl;
 
 import com.gym.management.domain.entity.ISysLogininforService;
-import com.gym.management.domain.entity.SysLogininfor;
+import com.gym.management.domain.entity.sys.SysLogininfor;
 import com.gym.management.mapper.sys.SysLogininforMapper;
 import com.gym.management.utils.Convert;
 import org.springframework.beans.factory.annotation.Autowired;

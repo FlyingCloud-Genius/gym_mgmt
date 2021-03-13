@@ -3,7 +3,7 @@ package com.gym.management.domain.entity.impl;
 import com.gym.management.constant.UserConstants;
 import com.gym.management.domain.Ztree;
 import com.gym.management.domain.entity.ISysDictTypeService;
-import com.gym.management.domain.entity.SysDictType;
+import com.gym.management.domain.entity.sys.SysDictType;
 import com.gym.management.exception.BusinessException;
 import com.gym.management.mapper.sys.SysDictDataMapper;
 import com.gym.management.mapper.sys.SysDictTypeMapper;

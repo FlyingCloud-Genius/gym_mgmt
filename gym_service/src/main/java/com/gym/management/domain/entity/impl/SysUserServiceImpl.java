@@ -3,6 +3,7 @@ package com.gym.management.domain.entity.impl;
 import com.gym.management.annotation.DataScope;
 import com.gym.management.constant.UserConstants;
 import com.gym.management.domain.entity.*;
+import com.gym.management.domain.entity.sys.*;
 import com.gym.management.exception.BusinessException;
 import com.gym.management.mapper.sys.*;
 import com.gym.management.utils.Convert;

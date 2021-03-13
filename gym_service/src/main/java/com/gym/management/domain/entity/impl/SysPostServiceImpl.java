@@ -2,7 +2,7 @@ package com.gym.management.domain.entity.impl;
 
 import com.gym.management.constant.UserConstants;
 import com.gym.management.domain.entity.ISysPostService;
-import com.gym.management.domain.entity.SysPost;
+import com.gym.management.domain.entity.sys.SysPost;
 import com.gym.management.exception.BusinessException;
 import com.gym.management.mapper.sys.SysPostMapper;
 import com.gym.management.mapper.sys.SysUserPostMapper;

@@ -4,7 +4,7 @@ import com.gym.management.constant.Constants;
 import com.gym.management.constant.ShiroConstants;
 import com.gym.management.constant.UserConstants;
 import com.gym.management.domain.entity.ISysUserService;
-import com.gym.management.domain.entity.SysUser;
+import com.gym.management.domain.entity.sys.SysUser;
 import com.gym.management.enums.UserStatus;
 import com.gym.management.exception.user.*;
 import com.gym.management.utils.*;

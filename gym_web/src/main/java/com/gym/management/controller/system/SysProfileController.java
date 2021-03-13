@@ -5,7 +5,7 @@ import com.gym.management.config.Global;
 import com.gym.management.controller.system.base.BaseController;
 import com.gym.management.domain.AjaxResult;
 import com.gym.management.domain.entity.ISysUserService;
-import com.gym.management.domain.entity.SysUser;
+import com.gym.management.domain.entity.sys.SysUser;
 import com.gym.management.enums.BusinessType;
 import com.gym.management.file.FileUploadUtils;
 import com.gym.management.shiro.service.SysPasswordService;
