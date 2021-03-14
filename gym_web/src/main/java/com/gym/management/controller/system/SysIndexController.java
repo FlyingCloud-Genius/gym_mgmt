@@ -2,9 +2,9 @@ package com.gym.management.controller.system;
 
 import com.gym.management.config.Global;
 import com.gym.management.controller.system.base.BaseController;
-import com.gym.management.domain.entity.ISysMenuService;
-import com.gym.management.domain.entity.sys.SysMenu;
-import com.gym.management.domain.entity.sys.SysUser;
+import com.gym.management.service.sys.ISysMenuService;
+import com.gym.management.domain.sys.SysMenu;
+import com.gym.management.domain.sys.SysUser;
 import com.gym.management.utils.ShiroUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

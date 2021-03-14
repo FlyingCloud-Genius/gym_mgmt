@@ -2,8 +2,8 @@ package com.gym.management.shiro.web.session;
 
 import com.gym.management.bean.BeanUtils;
 import com.gym.management.constant.ShiroConstants;
-import com.gym.management.domain.entity.ISysUserOnlineService;
-import com.gym.management.domain.entity.sys.SysUserOnline;
+import com.gym.management.service.sys.ISysUserOnlineService;
+import com.gym.management.domain.sys.SysUserOnline;
 import com.gym.management.shiro.session.OnlineSession;
 import com.gym.management.utils.DateUtils;
 import com.gym.management.utils.SpringUtils;

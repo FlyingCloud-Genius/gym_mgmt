@@ -1,7 +1,7 @@
 package com.gym.management.shiro.web.filter.online;
 
 import com.gym.management.constant.ShiroConstants;
-import com.gym.management.domain.entity.sys.SysUser;
+import com.gym.management.domain.sys.SysUser;
 import com.gym.management.enums.OnlineStatus;
 import com.gym.management.shiro.session.OnlineSession;
 import com.gym.management.shiro.session.OnlineSessionDAO;

@@ -34,7 +34,7 @@ spring:
 
 
 mybatis:
-  typeAliasesPackage: com.gym.management.domain.entity
+  typeAliasesPackage: com.gym.management.domain
   mapperLocations: classpath*:dal/**/*Mapper.xml #实体扫描，多个package用逗号或者分号分隔
   executor-type: reuse #默认的执行器SIMPLE、执行器重用REUSE、执行器重用语句批量更新BATCH
   configLocation: classpath:mybatis/mybatis-config.xml

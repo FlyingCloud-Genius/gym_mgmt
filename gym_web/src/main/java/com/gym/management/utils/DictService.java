@@ -1,7 +1,7 @@
 package com.gym.management.utils;
 
-import com.gym.management.domain.entity.ISysDictDataService;
-import com.gym.management.domain.entity.sys.SysDictData;
+import com.gym.management.service.sys.ISysDictDataService;
+import com.gym.management.domain.sys.SysDictData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

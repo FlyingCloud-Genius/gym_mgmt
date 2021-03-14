@@ -1,11 +1,12 @@
 package com.gym.management.utils;
 
 import com.gym.management.constant.Constants;
-import com.gym.management.domain.entity.*;
-import com.gym.management.domain.entity.impl.SysLogininforServiceImpl;
-import com.gym.management.domain.entity.sys.SysLogininfor;
-import com.gym.management.domain.entity.sys.SysOperLog;
-import com.gym.management.domain.entity.sys.SysUserOnline;
+import com.gym.management.service.sys.ISysOperLogService;
+import com.gym.management.service.sys.ISysUserOnlineService;
+import com.gym.management.domain.sys.SysLogininfor;
+import com.gym.management.domain.sys.SysOperLog;
+import com.gym.management.domain.sys.SysUserOnline;
+import com.gym.management.service.sys.impl.SysLogininforServiceImpl;
 import com.gym.management.shiro.session.OnlineSession;
 import eu.bitwalker.useragentutils.UserAgent;
 import org.slf4j.Logger;

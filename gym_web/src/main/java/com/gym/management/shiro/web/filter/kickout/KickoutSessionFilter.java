@@ -3,7 +3,7 @@ package com.gym.management.shiro.web.filter.kickout;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gym.management.constant.ShiroConstants;
 import com.gym.management.domain.AjaxResult;
-import com.gym.management.domain.entity.sys.SysUser;
+import com.gym.management.domain.sys.SysUser;
 import com.gym.management.utils.ServletUtils;
 import com.gym.management.utils.ShiroUtils;
 import org.apache.shiro.cache.Cache;

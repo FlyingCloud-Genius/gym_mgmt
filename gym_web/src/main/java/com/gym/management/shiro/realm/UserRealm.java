@@ -1,9 +1,9 @@
 package com.gym.management.shiro.realm;
 
 
-import com.gym.management.domain.entity.ISysMenuService;
-import com.gym.management.domain.entity.ISysRoleService;
-import com.gym.management.domain.entity.sys.SysUser;
+import com.gym.management.service.sys.ISysMenuService;
+import com.gym.management.service.sys.ISysRoleService;
+import com.gym.management.domain.sys.SysUser;
 import com.gym.management.exception.user.*;
 import com.gym.management.shiro.service.SysLoginService;
 import com.gym.management.utils.ShiroUtils;

@@ -1,6 +1,6 @@
 package com.gym.management.mapper.sys;
 
-import com.gym.management.domain.entity.sys.SysDept;
+import com.gym.management.domain.sys.SysDept;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

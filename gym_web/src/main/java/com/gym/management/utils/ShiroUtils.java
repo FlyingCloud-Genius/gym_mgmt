@@ -1,7 +1,7 @@
 package com.gym.management.utils;
 
 import com.gym.management.bean.BeanUtils;
-import com.gym.management.domain.entity.sys.SysUser;
+import com.gym.management.domain.sys.SysUser;
 import com.gym.management.shiro.realm.UserRealm;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;

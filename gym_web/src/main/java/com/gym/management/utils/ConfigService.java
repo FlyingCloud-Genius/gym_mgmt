@@ -1,6 +1,6 @@
 package com.gym.management.utils;
 
-import com.gym.management.domain.entity.ISysConfigService;
+import com.gym.management.service.sys.ISysConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

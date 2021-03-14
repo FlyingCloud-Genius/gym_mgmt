@@ -1,7 +1,7 @@
 package com.gym.management.shiro.service;
 
-import com.gym.management.domain.entity.ISysUserOnlineService;
-import com.gym.management.domain.entity.sys.SysUserOnline;
+import com.gym.management.service.sys.ISysUserOnlineService;
+import com.gym.management.domain.sys.SysUserOnline;
 import com.gym.management.shiro.session.OnlineSession;
 import com.gym.management.utils.StringUtils;
 import org.apache.shiro.session.Session;

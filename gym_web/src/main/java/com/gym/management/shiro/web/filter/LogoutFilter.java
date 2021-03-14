@@ -2,7 +2,7 @@ package com.gym.management.shiro.web.filter;
 
 import com.gym.management.constant.Constants;
 import com.gym.management.constant.ShiroConstants;
-import com.gym.management.domain.entity.sys.SysUser;
+import com.gym.management.domain.sys.SysUser;
 import com.gym.management.utils.*;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheManager;
