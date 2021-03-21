@@ -5,9 +5,9 @@
     <!--@mbg.generated-->
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="customer_id" jdbcType="BIGINT" property="customerId" />
-    <result column="membership_type" jdbcType="TINYINT" property="membershipType" />
     <result column="membership_start" jdbcType="TIMESTAMP" property="membershipStart" />
     <result column="membership_end" jdbcType="TIMESTAMP" property="membershipEnd" />
+    <result column="membership" jdbcType="TINYINT" property="membership" />
     <result column="card_remain_time" jdbcType="INTEGER" property="cardRemainTime" />
     <result column="create_by" jdbcType="VARCHAR" property="createBy" />
     <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
@@ -18,7 +18,7 @@
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, customer_id, membership_type, membership_start, membership_end, card_remain_time, 
+    id, customer_id, membership_start, membership_end, membership, card_remain_time, 
     create_by, created_time, update_by, modified_time, yn, remark
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
@@ -35,12 +35,12 @@
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.gym.management.domain.gym.GymCardInfo" useGeneratedKeys="true">
     <!--@mbg.generated-->
-    insert into gym_card_info (customer_id, membership_type, membership_start, 
-      membership_end, card_remain_time, create_by, 
+    insert into gym_card_info (customer_id, membership_start, membership_end, 
+      membership, card_remain_time, create_by, 
       created_time, update_by, modified_time, 
       yn, remark)
-    values (#{customerId,jdbcType=BIGINT}, #{membershipType,jdbcType=TINYINT}, #{membershipStart,jdbcType=TIMESTAMP}, 
-      #{membershipEnd,jdbcType=TIMESTAMP}, #{cardRemainTime,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, 
+    values (#{customerId,jdbcType=BIGINT}, #{membershipStart,jdbcType=TIMESTAMP}, #{membershipEnd,jdbcType=TIMESTAMP}, 
+      #{membership,jdbcType=TINYINT}, #{cardRemainTime,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, 
       #{createdTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{modifiedTime,jdbcType=TIMESTAMP}, 
       #{yn,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
   </insert>
@@ -51,14 +51,14 @@
       <if test="customerId != null">
         customer_id,
       </if>
-      <if test="membershipType != null">
-        membership_type,
-      </if>
       <if test="membershipStart != null">
         membership_start,
       </if>
       <if test="membershipEnd != null">
         membership_end,
+      </if>
+      <if test="membership != null">
+        membership,
       </if>
       <if test="cardRemainTime != null">
         card_remain_time,
@@ -86,14 +86,14 @@
       <if test="customerId != null">
         #{customerId,jdbcType=BIGINT},
       </if>
-      <if test="membershipType != null">
-        #{membershipType,jdbcType=TINYINT},
-      </if>
       <if test="membershipStart != null">
         #{membershipStart,jdbcType=TIMESTAMP},
       </if>
       <if test="membershipEnd != null">
         #{membershipEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="membership != null">
+        #{membership,jdbcType=TINYINT},
       </if>
       <if test="cardRemainTime != null">
         #{cardRemainTime,jdbcType=INTEGER},
@@ -125,14 +125,14 @@
       <if test="customerId != null">
         customer_id = #{customerId,jdbcType=BIGINT},
       </if>
-      <if test="membershipType != null">
-        membership_type = #{membershipType,jdbcType=TINYINT},
-      </if>
       <if test="membershipStart != null">
         membership_start = #{membershipStart,jdbcType=TIMESTAMP},
       </if>
       <if test="membershipEnd != null">
         membership_end = #{membershipEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="membership != null">
+        membership = #{membership,jdbcType=TINYINT},
       </if>
       <if test="cardRemainTime != null">
         card_remain_time = #{cardRemainTime,jdbcType=INTEGER},
@@ -162,9 +162,9 @@
     <!--@mbg.generated-->
     update gym_card_info
     set customer_id = #{customerId,jdbcType=BIGINT},
-      membership_type = #{membershipType,jdbcType=TINYINT},
       membership_start = #{membershipStart,jdbcType=TIMESTAMP},
       membership_end = #{membershipEnd,jdbcType=TIMESTAMP},
+      membership = #{membership,jdbcType=TINYINT},
       card_remain_time = #{cardRemainTime,jdbcType=INTEGER},
       create_by = #{createBy,jdbcType=VARCHAR},
       created_time = #{createdTime,jdbcType=TIMESTAMP},

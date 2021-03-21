@@ -1,13 +1,13 @@
 package com.gym.management.mapper.gym;
 
-import com.gym.management.domain.gym.GymCustomerPhoto;
+import com.gym.management.domain.gym.GymCardClass;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * @Entity com.gym.management.domain.gym.GymCustomerPhoto
+ * @Entity com.gym.management.domain.gym.GymCardClass
  */
 @Mapper
-public interface GymCustomerPhotoMapper {
+public interface GymCardClassMapper {
     /**
      *
      * @mbg.generated 2021-03-21 23:38:04
@@ -18,29 +18,29 @@ public interface GymCustomerPhotoMapper {
      *
      * @mbg.generated 2021-03-21 23:38:04
      */
-    int insert(GymCustomerPhoto record);
+    int insert(GymCardClass record);
 
     /**
      *
      * @mbg.generated 2021-03-21 23:38:04
      */
-    int insertSelective(GymCustomerPhoto record);
+    int insertSelective(GymCardClass record);
 
     /**
      *
      * @mbg.generated 2021-03-21 23:38:04
      */
-    GymCustomerPhoto selectByPrimaryKey(Long id);
+    GymCardClass selectByPrimaryKey(Long id);
 
     /**
      *
      * @mbg.generated 2021-03-21 23:38:04
      */
-    int updateByPrimaryKeySelective(GymCustomerPhoto record);
+    int updateByPrimaryKeySelective(GymCardClass record);
 
     /**
      *
      * @mbg.generated 2021-03-21 23:38:04
      */
-    int updateByPrimaryKey(GymCustomerPhoto record);
+    int updateByPrimaryKey(GymCardClass record);
 }

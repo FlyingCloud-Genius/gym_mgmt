@@ -4,9 +4,13 @@
   <resultMap id="BaseResultMap" type="com.gym.management.domain.gym.GymUser">
     <!--@mbg.generated-->
     <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="openid" jdbcType="VARCHAR" property="openid" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
     <result column="phone_num" jdbcType="VARCHAR" property="phoneNum" />
+    <result column="gender" jdbcType="TINYINT" property="gender" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
     <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
     <result column="national_id" jdbcType="VARCHAR" property="nationalId" />
     <result column="invitor" jdbcType="VARCHAR" property="invitor" />
@@ -25,9 +29,9 @@
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, `name`, nick_name, phone_num, birthday, national_id, invitor, address, mail_address, 
-    profession, annual_income, device_info, fitting_desire, create_by, created_time, 
-    update_by, modified_time, yn, remark
+    id, openid, `name`, nick_name, phone_num, gender, province, city, birthday, national_id, 
+    invitor, address, mail_address, profession, annual_income, device_info, fitting_desire, 
+    create_by, created_time, update_by, modified_time, yn, remark
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     <!--@mbg.generated-->
@@ -48,26 +52,31 @@
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.gym.management.domain.gym.GymUser" useGeneratedKeys="true">
     <!--@mbg.generated-->
-    insert into gym_user (`name`, nick_name, phone_num, 
-      birthday, national_id, invitor, 
-      address, mail_address, profession, 
-      annual_income, device_info, fitting_desire, 
-      create_by, created_time, update_by, 
-      modified_time, yn, remark
-      )
-    values (#{name,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{phoneNum,jdbcType=VARCHAR}, 
-      #{birthday,jdbcType=TIMESTAMP}, #{nationalId,jdbcType=VARCHAR}, #{invitor,jdbcType=VARCHAR}, 
-      #{address,jdbcType=VARCHAR}, #{mailAddress,jdbcType=VARCHAR}, #{profession,jdbcType=VARCHAR}, 
-      #{annualIncome,jdbcType=BIGINT}, #{deviceInfo,jdbcType=VARCHAR}, #{fittingDesire,jdbcType=VARCHAR}, 
-      #{createBy,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
-      #{modifiedTime,jdbcType=TIMESTAMP}, #{yn,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}
-      )
+    insert into gym_user (openid, `name`, nick_name, 
+      phone_num, gender, province, 
+      city, birthday, national_id, 
+      invitor, address, mail_address, 
+      profession, annual_income, device_info, 
+      fitting_desire, create_by, created_time, 
+      update_by, modified_time, yn, 
+      remark)
+    values (#{openid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
+      #{phoneNum,jdbcType=VARCHAR}, #{gender,jdbcType=TINYINT}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, #{nationalId,jdbcType=VARCHAR}, 
+      #{invitor,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{mailAddress,jdbcType=VARCHAR}, 
+      #{profession,jdbcType=VARCHAR}, #{annualIncome,jdbcType=BIGINT}, #{deviceInfo,jdbcType=VARCHAR}, 
+      #{fittingDesire,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=VARCHAR}, #{modifiedTime,jdbcType=TIMESTAMP}, #{yn,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.gym.management.domain.gym.GymUser" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into gym_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="name != null and name != ''">
+      <if test="openid != null">
+        openid,
+      </if>
+      <if test="name != null">
         `name`,
       </if>
       <if test="nickName != null">
@@ -75,6 +84,15 @@
       </if>
       <if test="phoneNum != null">
         phone_num,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
       </if>
       <if test="birthday != null">
         birthday,
@@ -123,7 +141,10 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="name != null and name != ''">
+      <if test="openid != null">
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
       <if test="nickName != null">
@@ -131,6 +152,15 @@
       </if>
       <if test="phoneNum != null">
         #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
       </if>
       <if test="birthday != null">
         #{birthday,jdbcType=TIMESTAMP},
@@ -183,6 +213,9 @@
     <!--@mbg.generated-->
     update gym_user
     <set>
+      <if test="openid != null">
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
       <if test="name != null">
         `name` = #{name,jdbcType=VARCHAR},
       </if>
@@ -191,6 +224,15 @@
       </if>
       <if test="phoneNum != null">
         phone_num = #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
       </if>
       <if test="birthday != null">
         birthday = #{birthday,jdbcType=TIMESTAMP},
@@ -243,9 +285,13 @@
   <update id="updateByPrimaryKey" parameterType="com.gym.management.domain.gym.GymUser">
     <!--@mbg.generated-->
     update gym_user
-    set `name` = #{name,jdbcType=VARCHAR},
+    set openid = #{openid,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
       nick_name = #{nickName,jdbcType=VARCHAR},
       phone_num = #{phoneNum,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=TINYINT},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
       birthday = #{birthday,jdbcType=TIMESTAMP},
       national_id = #{nationalId,jdbcType=VARCHAR},
       invitor = #{invitor,jdbcType=VARCHAR},

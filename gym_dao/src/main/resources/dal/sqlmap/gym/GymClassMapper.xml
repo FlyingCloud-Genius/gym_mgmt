@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.gym.management.mapper.gym.GymRegistryMapper">
-  <resultMap id="BaseResultMap" type="com.gym.management.domain.gym.GymRegistry">
+<mapper namespace="com.gym.management.mapper.gym.GymClassMapper">
+  <resultMap id="BaseResultMap" type="com.gym.management.domain.gym.GymClass">
     <!--@mbg.generated-->
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="customer_id" jdbcType="BIGINT" property="customerId" />
-    <result column="register_type" jdbcType="TINYINT" property="registerType" />
+    <result column="class_name" jdbcType="VARCHAR" property="className" />
+    <result column="class_type" jdbcType="TINYINT" property="classType" />
+    <result column="coach_id" jdbcType="BIGINT" property="coachId" />
     <result column="create_by" jdbcType="VARCHAR" property="createBy" />
     <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
     <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
@@ -15,39 +16,44 @@
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, customer_id, register_type, create_by, created_time, update_by, modified_time, 
+    id, class_name, class_type, coach_id, create_by, created_time, update_by, modified_time, 
     yn, remark
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     <!--@mbg.generated-->
     select 
     <include refid="Base_Column_List" />
-    from gym_registry
+    from gym_class
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     <!--@mbg.generated-->
-    delete from gym_registry
+    delete from gym_class
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.gym.management.domain.gym.GymRegistry" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.gym.management.domain.gym.GymClass" useGeneratedKeys="true">
     <!--@mbg.generated-->
-    insert into gym_registry (customer_id, register_type, create_by, 
-      created_time, update_by, modified_time, 
-      yn, remark)
-    values (#{customerId,jdbcType=BIGINT}, #{registerType,jdbcType=TINYINT}, #{createBy,jdbcType=VARCHAR}, 
-      #{createdTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{modifiedTime,jdbcType=TIMESTAMP}, 
-      #{yn,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
+    insert into gym_class (class_name, class_type, coach_id, 
+      create_by, created_time, update_by, 
+      modified_time, yn, remark
+      )
+    values (#{className,jdbcType=VARCHAR}, #{classType,jdbcType=TINYINT}, #{coachId,jdbcType=BIGINT}, 
+      #{createBy,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
+      #{modifiedTime,jdbcType=TIMESTAMP}, #{yn,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.gym.management.domain.gym.GymRegistry" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.gym.management.domain.gym.GymClass" useGeneratedKeys="true">
     <!--@mbg.generated-->
-    insert into gym_registry
+    insert into gym_class
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="customerId != null">
-        customer_id,
+      <if test="className != null">
+        class_name,
       </if>
-      <if test="registerType != null">
-        register_type,
+      <if test="classType != null">
+        class_type,
+      </if>
+      <if test="coachId != null">
+        coach_id,
       </if>
       <if test="createBy != null">
         create_by,
@@ -69,11 +75,14 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="customerId != null">
-        #{customerId,jdbcType=BIGINT},
+      <if test="className != null">
+        #{className,jdbcType=VARCHAR},
       </if>
-      <if test="registerType != null">
-        #{registerType,jdbcType=TINYINT},
+      <if test="classType != null">
+        #{classType,jdbcType=TINYINT},
+      </if>
+      <if test="coachId != null">
+        #{coachId,jdbcType=BIGINT},
       </if>
       <if test="createBy != null">
         #{createBy,jdbcType=VARCHAR},
@@ -95,15 +104,18 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.gym.management.domain.gym.GymRegistry">
+  <update id="updateByPrimaryKeySelective" parameterType="com.gym.management.domain.gym.GymClass">
     <!--@mbg.generated-->
-    update gym_registry
+    update gym_class
     <set>
-      <if test="customerId != null">
-        customer_id = #{customerId,jdbcType=BIGINT},
+      <if test="className != null">
+        class_name = #{className,jdbcType=VARCHAR},
       </if>
-      <if test="registerType != null">
-        register_type = #{registerType,jdbcType=TINYINT},
+      <if test="classType != null">
+        class_type = #{classType,jdbcType=TINYINT},
+      </if>
+      <if test="coachId != null">
+        coach_id = #{coachId,jdbcType=BIGINT},
       </if>
       <if test="createBy != null">
         create_by = #{createBy,jdbcType=VARCHAR},
@@ -126,11 +138,12 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.gym.management.domain.gym.GymRegistry">
+  <update id="updateByPrimaryKey" parameterType="com.gym.management.domain.gym.GymClass">
     <!--@mbg.generated-->
-    update gym_registry
-    set customer_id = #{customerId,jdbcType=BIGINT},
-      register_type = #{registerType,jdbcType=TINYINT},
+    update gym_class
+    set class_name = #{className,jdbcType=VARCHAR},
+      class_type = #{classType,jdbcType=TINYINT},
+      coach_id = #{coachId,jdbcType=BIGINT},
       create_by = #{createBy,jdbcType=VARCHAR},
       created_time = #{createdTime,jdbcType=TIMESTAMP},
       update_by = #{updateBy,jdbcType=VARCHAR},
