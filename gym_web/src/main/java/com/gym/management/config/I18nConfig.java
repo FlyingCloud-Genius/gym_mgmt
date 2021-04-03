@@ -21,7 +21,7 @@ public class I18nConfig implements WebMvcConfigurer {
     public LocaleResolver localeResolver() {
         SessionLocaleResolver slr = new SessionLocaleResolver();
         // 默认语言
-        slr.setDefaultLocale(Locale.ENGLISH);
+        slr.setDefaultLocale(Locale.CHINA);
         return slr;
     }
 

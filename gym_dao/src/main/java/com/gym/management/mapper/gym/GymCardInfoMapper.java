@@ -32,6 +32,8 @@ public interface GymCardInfoMapper {
      */
     GymCardInfo selectByPrimaryKey(Long id);
 
+    GymCardInfo selectBySelective(GymCardInfo cardInfo);
+
     /**
      *
      * @mbg.generated 2021-03-21 23:38:04

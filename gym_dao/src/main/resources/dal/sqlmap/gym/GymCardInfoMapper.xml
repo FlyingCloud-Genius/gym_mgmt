@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.gym.management.domain.gym.GymCardInfo">
     <!--@mbg.generated-->
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="customer_id" jdbcType="BIGINT" property="customerId" />
+    <result column="card_id" jdbcType="VARCHAR" property="cardId" />
     <result column="membership_start" jdbcType="TIMESTAMP" property="membershipStart" />
     <result column="membership_end" jdbcType="TIMESTAMP" property="membershipEnd" />
     <result column="membership" jdbcType="TINYINT" property="membership" />
@@ -18,7 +18,7 @@
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, customer_id, membership_start, membership_end, membership, card_remain_time, 
+    id, card_id, membership_start, membership_end, membership, card_remain_time,
     create_by, created_time, update_by, modified_time, yn, remark
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
@@ -28,6 +28,12 @@
     from gym_card_info
     where id = #{id,jdbcType=BIGINT}
   </select>
+  <select id="selectBySelective" parameterType="com.gym.management.domain.gym.GymCardInfo" resultType="com.gym.management.domain.gym.GymCardInfo">
+    select <include refid="Base_Column_List"/>
+    from gym_card_info
+    where yn = 1
+    <if test="cardId != null and cardId != ''"> and card_id = #{cardId,jdbcType=VARCHAR}</if>
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     <!--@mbg.generated-->
     delete from gym_card_info
@@ -35,11 +41,11 @@
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.gym.management.domain.gym.GymCardInfo" useGeneratedKeys="true">
     <!--@mbg.generated-->
-    insert into gym_card_info (customer_id, membership_start, membership_end, 
+    insert into gym_card_info (card_id, membership_start, membership_end,
       membership, card_remain_time, create_by, 
       created_time, update_by, modified_time, 
       yn, remark)
-    values (#{customerId,jdbcType=BIGINT}, #{membershipStart,jdbcType=TIMESTAMP}, #{membershipEnd,jdbcType=TIMESTAMP}, 
+    values (#{cardId,jdbcType=VARCHAR}, #{membershipStart,jdbcType=TIMESTAMP}, #{membershipEnd,jdbcType=TIMESTAMP},
       #{membership,jdbcType=TINYINT}, #{cardRemainTime,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, 
       #{createdTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{modifiedTime,jdbcType=TIMESTAMP}, 
       #{yn,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
@@ -48,8 +54,8 @@
     <!--@mbg.generated-->
     insert into gym_card_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="customerId != null">
-        customer_id,
+      <if test="cardId != null">
+        card_id,
       </if>
       <if test="membershipStart != null">
         membership_start,
@@ -83,8 +89,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="customerId != null">
-        #{customerId,jdbcType=BIGINT},
+      <if test="cardId != null">
+        #{cardId,jdbcType=VARCHAR},
       </if>
       <if test="membershipStart != null">
         #{membershipStart,jdbcType=TIMESTAMP},
@@ -122,8 +128,8 @@
     <!--@mbg.generated-->
     update gym_card_info
     <set>
-      <if test="customerId != null">
-        customer_id = #{customerId,jdbcType=BIGINT},
+      <if test="cardId != null">
+        card_id = #{cardId,jdbcType=VARCHAR},
       </if>
       <if test="membershipStart != null">
         membership_start = #{membershipStart,jdbcType=TIMESTAMP},
@@ -161,7 +167,7 @@
   <update id="updateByPrimaryKey" parameterType="com.gym.management.domain.gym.GymCardInfo">
     <!--@mbg.generated-->
     update gym_card_info
-    set customer_id = #{customerId,jdbcType=BIGINT},
+    set card_id = #{cardId,jdbcType=VARCHAR},
       membership_start = #{membershipStart,jdbcType=TIMESTAMP},
       membership_end = #{membershipEnd,jdbcType=TIMESTAMP},
       membership = #{membership,jdbcType=TINYINT},

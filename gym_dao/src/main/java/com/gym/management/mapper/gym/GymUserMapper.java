@@ -18,12 +18,6 @@ public interface GymUserMapper {
      *
      * @mbg.generated 2021-03-21 23:38:04
      */
-    int insert(GymUser record);
-
-    /**
-     *
-     * @mbg.generated 2021-03-21 23:38:04
-     */
     int insertSelective(GymUser record);
 
     /**
@@ -32,17 +26,11 @@ public interface GymUserMapper {
      */
     GymUser selectByPrimaryKey(Long id);
 
-    List<GymUser> selectSelective(GymUserParam gymUserParam);
+    List<GymUser> selectBySelective(GymUserParam gymUserParam);
 
     /**
      *
      * @mbg.generated 2021-03-21 23:38:04
      */
     int updateByPrimaryKeySelective(GymUser record);
-
-    /**
-     *
-     * @mbg.generated 2021-03-21 23:38:04
-     */
-    int updateByPrimaryKey(GymUser record);
 }
