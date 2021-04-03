@@ -2,6 +2,7 @@ package com.gym.management.aop.exception;
 
 import com.gym.management.constant.Constants;
 import com.gym.management.service.exception.CardExistException;
+import com.gym.management.service.exception.CardInUseException;
 import com.gym.management.service.exception.CardNotExistException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.exception.ExceptionUtils;
@@ -65,24 +66,8 @@ public class MyControllerAdvice {
      * @return
      */
     @ResponseBody
-    @ExceptionHandler(value = CardExistException.class)
-    public Map cardExistErrorHandler(CardExistException ex) {
-        log.error("GLOBAL! Something not catched wend wrong: \n {}", ExceptionUtils.getStackTrace(ex));
-        Map map = new HashMap();
-        map.put("code", Constants.ERROR_CODE);
-        map.put("msg", ex.getMessage());
-        return map;
-    }
-
-    /**
-     * 登记异常处理
-     *
-     * @param ex
-     * @return
-     */
-    @ResponseBody
-    @ExceptionHandler(value = CardNotExistException.class)
-    public Map cardNotExistErrorHandler(CardNotExistException ex) {
+    @ExceptionHandler(value = {CardNotExistException.class, CardInUseException.class, CardExistException.class})
+    public Map cardErrorHandler(CardNotExistException ex) {
         log.error("GLOBAL! Something not catched wend wrong: \n {}", ExceptionUtils.getStackTrace(ex));
         Map map = new HashMap();
         map.put("code", Constants.ERROR_CODE);
