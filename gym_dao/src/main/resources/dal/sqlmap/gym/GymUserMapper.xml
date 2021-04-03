@@ -20,7 +20,6 @@
     <result column="annual_income" jdbcType="BIGINT" property="annualIncome" />
     <result column="device_info" jdbcType="VARCHAR" property="deviceInfo" />
     <result column="fitting_desire" jdbcType="VARCHAR" property="fittingDesire" />
-    <result column="card_id" jdbcType="VARCHAR" property="cardId" />
     <result column="create_by" jdbcType="VARCHAR" property="createBy" />
     <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
     <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
@@ -32,7 +31,7 @@
     <!--@mbg.generated-->
     id, openid, `name`, nick_name, phone_num, gender, province, city, birthday, national_id, 
     invitor, address, mail_address, profession, annual_income, device_info, fitting_desire, 
-    card_id, create_by, created_time, update_by, modified_time, yn, remark
+    create_by, created_time, update_by, modified_time, yn, remark
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     <!--@mbg.generated-->
@@ -42,7 +41,7 @@
     where id = #{id,jdbcType=BIGINT}
   </select>
 
-  <select id="selectBySelective" resultType="com.gym.management.domain.gym.GymUser">
+  <select id="selectBySelective" parameterType="Object" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from gym_user
@@ -177,9 +176,6 @@
       <if test="fittingDesire != null">
         #{fittingDesire,jdbcType=VARCHAR},
       </if>
-      <if test="cardId != null">
-        #{cardId,jdbcType=VARCHAR},
-      </if>
       <if test="createBy != null">
         #{createBy,jdbcType=VARCHAR},
       </if>
@@ -248,9 +244,6 @@
       </if>
       <if test="deviceInfo != null">
         device_info = #{deviceInfo,jdbcType=VARCHAR},
-      </if>
-      <if test="cardId != null">
-        card_id = #{cardId,jdbcType=VARCHAR},
       </if>
       <if test="fittingDesire != null">
         fitting_desire = #{fittingDesire,jdbcType=VARCHAR},

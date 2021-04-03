@@ -1,5 +1,6 @@
 package com.gym.management.domain.gym;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -51,7 +52,7 @@ public class GymUser implements Serializable {
      *
      * @mbg.generated 2021-03-21 23:38:04
      */
-    private Byte gender;
+    private Integer gender;
 
     /**
      * province
@@ -72,6 +73,7 @@ public class GymUser implements Serializable {
      *
      * @mbg.generated 2021-03-21 23:38:04
      */
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date birthday;
 
     /**
@@ -142,6 +144,7 @@ public class GymUser implements Serializable {
      *
      * @mbg.generated 2021-03-21 23:38:04
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date createdTime;
 
     /**

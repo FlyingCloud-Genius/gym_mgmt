@@ -2,6 +2,8 @@ package com.gym.management.domain.param;
 
 import lombok.Data;
 
+import java.util.Map;
+
 @Data
 public class GymUserParam {
 
@@ -9,7 +11,7 @@ public class GymUserParam {
 
     private String cardNum;
 
-    private String idNum;
-
     private String name;
+
+    private Map<String, String> params;
 }
