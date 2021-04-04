@@ -2,6 +2,7 @@ package com.gym.management.mapper.gym;
 
 import com.gym.management.domain.gym.GymCardInfo;
 import com.gym.management.domain.param.GymCardInfoParam;
+import com.gym.management.domain.view.GymCardInfoView;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -40,6 +41,12 @@ public interface GymCardInfoMapper {
      * @mbg.generated 2021-03-21 23:38:04
      */
     List<GymCardInfo> selectBySelective(GymCardInfoParam cardInfo);
+
+    /**
+     *
+     * @mbg.generated 2021-03-21 23:38:04
+     */
+    List<GymCardInfoView> selectBySelectiveForView(GymCardInfoParam cardInfo);
 
     /**
      *

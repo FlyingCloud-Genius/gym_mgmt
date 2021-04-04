@@ -30,7 +30,7 @@ public class GymRegistry implements Serializable {
      *
      * @mbg.generated 2021-03-21 23:38:04
      */
-    private Byte registerType;
+    private Integer registerType;
 
     /**
      * 创建者

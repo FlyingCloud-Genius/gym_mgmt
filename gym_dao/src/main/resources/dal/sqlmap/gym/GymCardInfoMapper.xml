@@ -9,6 +9,7 @@
     <result column="membership_start" jdbcType="TIMESTAMP" property="membershipStart" />
     <result column="membership_end" jdbcType="TIMESTAMP" property="membershipEnd" />
     <result column="membership" jdbcType="TINYINT" property="membership" />
+    <result column="card_total_time" jdbcType="INTEGER" property="cardTotalTime" />
     <result column="card_remain_time" jdbcType="INTEGER" property="cardRemainTime" />
     <result column="create_by" jdbcType="VARCHAR" property="createBy" />
     <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
@@ -17,10 +18,24 @@
     <result column="yn" jdbcType="INTEGER" property="yn" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
   </resultMap>
+
+  <resultMap id="ViewResultMap" type="com.gym.management.domain.view.GymCardInfoView">
+    <id column="id" jdbcType="BIGINT" property="id"/>
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="phone_num" jdbcType="VARCHAR" property="phoneNum" />
+    <result column="membership_start" jdbcType="TIMESTAMP" property="membershipStart" />
+    <result column="membership_end" jdbcType="TIMESTAMP" property="membershipEnd" />
+    <result column="membership" jdbcType="TINYINT" property="membership" />
+    <result column="card_total_time" jdbcType="INTEGER" property="cardTotalTime" />
+    <result column="card_remain_time" jdbcType="INTEGER" property="cardRemainTime" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="createBy" />
+  </resultMap>
+
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
     id, card_id, customer_id, membership_start, membership_end, membership, card_remain_time,
-    create_by, created_time, update_by, modified_time, yn, remark
+    card_total_time, create_by, created_time, update_by, modified_time, yn, remark
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     <!--@mbg.generated-->
@@ -35,6 +50,16 @@
     from gym_card_info
     where yn = 1
     <if test="cardId != null and cardId != ''"> and card_id = #{cardId,jdbcType=VARCHAR}</if>
+  </select>
+
+  <select id="selectBySelectiveForView" parameterType="GymCardInfoParam" resultMap="ViewResultMap">
+    select ci.id, ci.membership_start, ci.membership_end, ci.membership, ci.card_total_time, ci.card_remain_time, ci.create_by, ci.created_time, u.name, u.phone_num
+    from gym_card_info as ci left join gym_user as u on u.id = ci.customer_id
+    where ci.yn = 1 and u.yn = 1
+    <if test="cardId != null and cardId != ''"> and ci.card_id = #{cardId} </if>
+    <if test="name != null and name != ''"> and u.name like concat('%', #{name}, '%') </if>
+    <if test="nationalId != null and nationalId != ''"> and u.national_id like concat('%', #{nationalId}, '%') </if>
+    <if test="phoneNum != null and phoneNum != ''"> and u.phone_num like concat('%', #{phoneNum}, '%') </if>
   </select>
 
   <select id="selectByCardId" parameterType="Object" resultMap="BaseResultMap">
@@ -68,6 +93,9 @@
       </if>
       <if test="membership != null">
         membership,
+      </if>
+      <if test="cardTotalTime != null">
+        card_total_time,
       </if>
       <if test="cardRemainTime != null">
         card_remain_time,
@@ -106,6 +134,9 @@
       </if>
       <if test="membership != null">
         #{membership,jdbcType=TINYINT},
+      </if>
+      <if test="cardTotalTime != null">
+        #{cardTotalTime,jdbcType=TINYINT},
       </if>
       <if test="cardRemainTime != null">
         #{cardRemainTime,jdbcType=INTEGER},
@@ -149,6 +180,9 @@
       </if>
       <if test="membership != null">
         membership = #{membership,jdbcType=TINYINT},
+      </if>
+      <if test="cardTotalTime != null">
+        card_total_time = #{cardTotalTime,jdbcType=TINYINT},
       </if>
       <if test="cardRemainTime != null">
         card_remain_time = #{cardRemainTime,jdbcType=INTEGER},

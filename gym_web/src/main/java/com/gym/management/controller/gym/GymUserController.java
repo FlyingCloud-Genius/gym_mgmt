@@ -2,7 +2,7 @@ package com.gym.management.controller.gym;
 
 import com.gym.management.controller.system.base.BaseController;
 import com.gym.management.domain.AjaxResult;
-import com.gym.management.domain.DO.CreateUserVO;
+import com.gym.management.domain.VO.CreateUserVO;
 import com.gym.management.domain.gym.GymUser;
 import com.gym.management.domain.param.GymUserParam;
 import com.gym.management.page.TableDataInfo;
@@ -71,6 +71,7 @@ public class GymUserController extends BaseController {
     @RequestMapping("/editSave")
     @ResponseBody
     public AjaxResult editSave(GymUser user) {
+        user.setUpdateBy(ShiroUtils.getLoginName());
         gymUserService.editSave(user);
         return success("user edit successfully!!");
     }

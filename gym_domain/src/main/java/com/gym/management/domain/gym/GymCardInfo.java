@@ -26,6 +26,13 @@ public class GymCardInfo implements Serializable {
     private Long customerId;
 
     /**
+     * import card id
+     *
+     * @mbg.generated 2021-03-21 23:38:04
+     */
+    private String cardId;
+
+    /**
      * membership start time
      *
      * @mbg.generated 2021-03-21 23:38:04
@@ -44,7 +51,7 @@ public class GymCardInfo implements Serializable {
      *
      * @mbg.generated 2021-03-21 23:38:04
      */
-    private Byte membership;
+    private Integer membership;
 
     /**
      * card remained used count

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <th:block th:include="include :: header('新增健身馆用户')" />
+</head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-user-add">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">健身卡卡号：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="cardId" id="cardId" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label is-required">卡类型：</label>
+            <div class="col-sm-8">
+                <div class="input-group" style="width: 100%">
+                    <select id="membership" name="membership" class="form-control m-b" onchange="shiftCardType()" th:with="type=${@dict.getType('gym_card_type')}">
+                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}"
+                                th:value="${dict.dictValue}" ></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" id="timeCardStart" hidden>
+            <label class="col-sm-3 control-label">健身卡生效时间：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="membershipStart" id="membershipStart">
+            </div>
+        </div>
+        <div class="form-group" id="timeCardEnd" hidden>
+            <label class="col-sm-3 control-label">健身卡失效时间：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="membershipEnd" id="membershipEnd">
+            </div>
+        </div>
+        <div class="form-group" id="cardRemainCount" hidden>
+            <label class="col-sm-3 control-label">卡剩余次数：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="cardRemainTime" id="cardRemainTime">
+            </div>
+        </div>
+    </form>
+</div>
+<th:block th:include="include :: footer" />
+<script type="text/javascript">
+    var prefix = ctx + "gym/cardInfo";
+
+    $(function () {
+        shiftCardType();
+    });
+
+    $("#form-dept-add").validate({
+        onkeyup: false,
+        rules:{
+            membershipStart: {
+                required: function() {if ($("#membership").val() == 1) {
+                    return true;
+                } else {return false;}}
+            },
+            membershipEnd: {
+                required: function() {if ($("#membership").val() == 1) {
+                    return true;} else {return false;}
+                }
+            },
+            cardRemainTime: {
+                required: function() {if ($("#membership").val() == 2 || ($("#membership").val() == 3)) {
+                    return true;} else {return false;}
+                }
+            }
+        },
+        messages: {
+
+        },
+        focusCleanup: true
+    });
+
+    function submitHandler() {
+        if ($.validate.form()) {
+            $.operate.save(prefix + "/addSave", $('#form-user-add').serialize());
+        }
+    }
+
+    function shiftCardType() {
+        if ($("#membership").val() == 1) {
+            document.getElementById("timeCardStart").removeAttribute("hidden");
+            document.getElementById("timeCardEnd").removeAttribute("hidden");
+            document.getElementById("cardRemainCount").setAttribute("hidden", true);
+        } else {
+            document.getElementById("timeCardStart").setAttribute("hidden", true);
+            document.getElementById("timeCardEnd").setAttribute("hidden", true);
+            document.getElementById("cardRemainCount").removeAttribute("hidden");
+        }
+    }
+</script>
+</body>
+</html>

@@ -2,7 +2,7 @@ package com.gym.management.service.gym;
 
 import java.util.List;
 
-import com.gym.management.domain.DO.CreateUserVO;
+import com.gym.management.domain.VO.CreateUserVO;
 import com.gym.management.domain.gym.GymUser;
 import com.gym.management.domain.param.GymUserParam;
 

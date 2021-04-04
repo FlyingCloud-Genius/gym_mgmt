@@ -1,4 +1,4 @@
-package com.gym.management.domain.DO;
+package com.gym.management.domain.VO;
 
 import lombok.Data;
 

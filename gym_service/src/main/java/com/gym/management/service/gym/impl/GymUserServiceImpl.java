@@ -1,6 +1,6 @@
 package com.gym.management.service.gym.impl;
 
-import com.gym.management.domain.DO.CreateUserVO;
+import com.gym.management.domain.VO.CreateUserVO;
 import com.gym.management.domain.gym.GymCardInfo;
 import com.gym.management.domain.gym.GymRegistry;
 import com.gym.management.domain.gym.GymUser;
@@ -15,7 +15,6 @@ import com.gym.management.service.exception.CardNotExistException;
 import com.gym.management.service.gym.GymUserService;
 import com.gym.management.utils.Convert;
 import com.gym.management.utils.DateUtils;
-import com.gym.management.utils.StringUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -58,9 +57,11 @@ public class GymUserServiceImpl implements GymUserService {
         userMapper.insertSelective(user);
 
         //create card or drop
+        if (cardInfoMapper.selectByCardId(vo.getCardId()) != null) throw new CardExistException();
         GymCardInfo cardInfo = new GymCardInfo();
         cardInfo.setCardId(vo.getCardId());
-        if (cardInfoMapper.selectByCardId(vo.getCardId()) != null) throw new CardExistException();
+        cardInfo.setCustomerId(user.getId());
+        cardInfo.setCreateBy(createUser);
         cardInfoMapper.insertSelective(cardInfo);
     }
 

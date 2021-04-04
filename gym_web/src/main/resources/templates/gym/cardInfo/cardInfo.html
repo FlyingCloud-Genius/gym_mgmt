@@ -35,13 +35,13 @@
             </div>
 
             <div class="btn-group-sm" id="toolbar" role="group">
-                <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="gym:user:add">
+                <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="gym:card:add">
                     <i class="fa fa-plus"></i> 新增
                 </a>
-                <a class="btn btn-primary single disabled" onclick="$.operate.edit()" shiro:hasPermission="gym:user:edit">
+                <a class="btn btn-primary single disabled" onclick="$.operate.edit()" shiro:hasPermission="gym:card:edit">
                     <i class="fa fa-edit"></i> 修改
                 </a>
-                <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="gym:user:remove">
+                <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="gym:card:remove">
                     <i class="fa fa-remove"></i> 删除
                 </a>
             </div>
@@ -57,10 +57,10 @@
 <th:block th:include="include :: layout-latest-js" />
 <th:block th:include="include :: ztree-js" />
 <script th:inline="javascript">
-    var editFlag = [[${@permission.hasPermi('gym:user:edit')}]];
-    var removeFlag = [[${@permission.hasPermi('gym:user:remove')}]];
-    var detailFlag = [[${@permission.hasPermi('gym:user:detail')}]];
-    var prefix = ctx + "gym/user";
+    var editFlag = [[${@permission.hasPermi('gym:card:edit')}]];
+    var removeFlag = [[${@permission.hasPermi('gym:card:remove')}]];
+    var detailFlag = [[${@permission.hasPermi('gym:card:detail')}]];
+    var prefix = ctx + "gym/cardInfo";
 
     $(function() {
         var panehHidden = false;
@@ -85,6 +85,7 @@
                 {
                     field: 'id',
                     title: "id",
+                    visible: false,
                     sortable: true
                 },
                 {
@@ -92,26 +93,27 @@
                     title: "姓名"
                 },
                 {
-                    field: 'nickName',
-                    title: "昵称"
+                    field: 'cardId',
+                    title: "健身卡卡号"
                 },
                 {
-                    field: 'phoneNum',
-                    title: "手机号码",
+                    field: 'membershipStart',
+                    title: "时间卡生效时间",
                     visible: true
                 },
                 {
-                    field: 'birthday',
-                    title: "生日",
+                    field: 'membershipEnd',
+                    title: "时间卡失效时间",
                     visible: true
                 },
                 {
-                    field: 'profession',
-                    title: "职业"
+                    field: 'membership',
+                    title: "卡类型"
                 },
                 {
                     field: 'createdTime',
-                    title: "加入时间"
+                    title: "创卡时间",
+                    sortable: true
                 },
                 {
                     title: "操作",
