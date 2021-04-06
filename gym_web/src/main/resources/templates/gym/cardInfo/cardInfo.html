@@ -60,6 +60,7 @@
     var editFlag = [[${@permission.hasPermi('gym:card:edit')}]];
     var removeFlag = [[${@permission.hasPermi('gym:card:remove')}]];
     var detailFlag = [[${@permission.hasPermi('gym:card:detail')}]];
+    var cardTypes = [[${@dict.getType('gym_card_type')}]];
     var prefix = ctx + "gym/cardInfo";
 
     $(function() {
@@ -98,17 +99,18 @@
                 },
                 {
                     field: 'membershipStart',
-                    title: "时间卡生效时间",
-                    visible: true
+                    title: "时间卡生效时间"
                 },
                 {
                     field: 'membershipEnd',
-                    title: "时间卡失效时间",
-                    visible: true
+                    title: "时间卡失效时间"
                 },
                 {
                     field: 'membership',
-                    title: "卡类型"
+                    title: "卡类型",
+                    formatter: function (value, row, index) {
+                        return $.table.selectDictLabel(cardTypes, value);
+                    }
                 },
                 {
                     field: 'createdTime',

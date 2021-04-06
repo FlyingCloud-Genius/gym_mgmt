@@ -50,6 +50,14 @@
     <if test="phoneNum != null and phoneNum != ''"> and phone_num like concat('%', #{phoneNum}, '%')</if>
   </select>
 
+  <select id="selectBySelectiveForView" parameterType="Object" resultMap="ViewResultMap">
+    select
+    from gym_user as u
+    join gym_card_info as ci on ci.customer_id = u.id and ci.membership > 2
+    left join
+
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     <!--@mbg.generated-->
     update gym_user

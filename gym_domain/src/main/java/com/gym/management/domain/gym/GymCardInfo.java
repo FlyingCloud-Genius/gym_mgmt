@@ -54,13 +54,6 @@ public class GymCardInfo implements Serializable {
     private Integer membership;
 
     /**
-     * card remained used count
-     *
-     * @mbg.generated 2021-03-21 23:38:04
-     */
-    private Integer cardRemainTime;
-
-    /**
      * 创建者
      *
      * @mbg.generated 2021-03-21 23:38:04

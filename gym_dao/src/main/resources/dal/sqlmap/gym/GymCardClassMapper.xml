@@ -6,7 +6,9 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="card_id" jdbcType="BIGINT" property="cardId" />
     <result column="class_id" jdbcType="BIGINT" property="classId" />
+    <result column="total_count" jdbcType="INTEGER" property="totalCount" />
     <result column="remain_count" jdbcType="INTEGER" property="remainCount" />
+    <result column="price_per_class" jdbcType="INTEGER" property="pricePerClass" />
     <result column="create_by" jdbcType="VARCHAR" property="createBy" />
     <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
     <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
@@ -16,7 +18,7 @@
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, card_id, class_id, remain_count, create_by, created_time, update_by, modified_time, 
+    id, card_id, class_id, total_count, remain_count, price_per_class, create_by, created_time, update_by, modified_time,
     yn, remark
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
@@ -28,20 +30,10 @@
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     <!--@mbg.generated-->
-    delete from gym_card_class
+    update gym_card_class
+    set yn = 0
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.gym.management.domain.gym.GymCardClass" useGeneratedKeys="true">
-    <!--@mbg.generated-->
-    insert into gym_card_class (card_id, class_id, remain_count, 
-      create_by, created_time, update_by, 
-      modified_time, yn, remark
-      )
-    values (#{cardId,jdbcType=BIGINT}, #{classId,jdbcType=BIGINT}, #{remainCount,jdbcType=INTEGER}, 
-      #{createBy,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
-      #{modifiedTime,jdbcType=TIMESTAMP}, #{yn,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}
-      )
-  </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.gym.management.domain.gym.GymCardClass" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into gym_card_class
@@ -52,8 +44,14 @@
       <if test="classId != null">
         class_id,
       </if>
+      <if test="totalCount != null">
+        total_count,
+      </if>
       <if test="remainCount != null">
         remain_count,
+      </if>
+      <if test="pricePerClass != null">
+        price_per_class,
       </if>
       <if test="createBy != null">
         create_by,
@@ -81,8 +79,14 @@
       <if test="classId != null">
         #{classId,jdbcType=BIGINT},
       </if>
+      <if test="totalCount != null">
+        #{totalCount,jdbcType=INTEGER},
+      </if>
       <if test="remainCount != null">
         #{remainCount,jdbcType=INTEGER},
+      </if>
+      <if test="pricePerClass != null">
+        #{pricePerClass,jdbcType=INTEGER},
       </if>
       <if test="createBy != null">
         #{createBy,jdbcType=VARCHAR},
@@ -114,8 +118,14 @@
       <if test="classId != null">
         class_id = #{classId,jdbcType=BIGINT},
       </if>
+      <if test="totalCount != null">
+        total_count = #{totalCount,jdbcType=INTEGER},
+      </if>
       <if test="remainCount != null">
         remain_count = #{remainCount,jdbcType=INTEGER},
+      </if>
+      <if test="remainCount != null">
+        price_per_class = #{pricePerClass,jdbcType=INTEGER},
       </if>
       <if test="createBy != null">
         create_by = #{createBy,jdbcType=VARCHAR},
@@ -136,20 +146,6 @@
         remark = #{remark,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.gym.management.domain.gym.GymCardClass">
-    <!--@mbg.generated-->
-    update gym_card_class
-    set card_id = #{cardId,jdbcType=BIGINT},
-      class_id = #{classId,jdbcType=BIGINT},
-      remain_count = #{remainCount,jdbcType=INTEGER},
-      create_by = #{createBy,jdbcType=VARCHAR},
-      created_time = #{createdTime,jdbcType=TIMESTAMP},
-      update_by = #{updateBy,jdbcType=VARCHAR},
-      modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
-      yn = #{yn,jdbcType=INTEGER},
-      remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

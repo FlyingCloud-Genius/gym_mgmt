@@ -3,6 +3,7 @@ package com.gym.management.domain.gym;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -33,11 +34,25 @@ public class GymCardClass implements Serializable {
     private Long classId;
 
     /**
+     * class total times
+     *
+     * @mbg.generated 2021-03-21 23:38:04
+     */
+    private Integer totalCount;
+
+    /**
      * class remain times
      *
      * @mbg.generated 2021-03-21 23:38:04
      */
     private Integer remainCount;
+
+    /**
+     * price each class
+     *
+     * @mbg.generated 2021-03-21 23:38:04
+     */
+    private BigDecimal pricePerClass;
 
     /**
      * 创建者

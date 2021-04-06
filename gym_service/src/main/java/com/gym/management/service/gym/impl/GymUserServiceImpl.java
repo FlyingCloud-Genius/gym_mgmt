@@ -118,9 +118,9 @@ public class GymUserServiceImpl implements GymUserService {
         //different registerType shares different registration result
         switch (RegisterTypeEnum.getEnumByCode(registrationType)) {
             case NORMAL:
-                // time card or
+                // time card / count card and count down
             case CLASSES:
-
+                // find all corresponding classes and register specific classes and count down
             default:
                 throw new CardNotExistException();
         }
