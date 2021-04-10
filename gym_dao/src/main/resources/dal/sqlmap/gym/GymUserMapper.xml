@@ -27,12 +27,18 @@
     <result column="yn" jdbcType="INTEGER" property="yn" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
   </resultMap>
+
+  <resultMap id="ViewResultMap" type="com.gym.management.domain.view.GymUserView">
+
+  </resultMap>
+
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
     id, openid, `name`, nick_name, phone_num, gender, province, city, birthday, national_id, 
     invitor, address, mail_address, profession, annual_income, device_info, fitting_desire, 
     create_by, created_time, update_by, modified_time, yn, remark
   </sql>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     <!--@mbg.generated-->
     select 

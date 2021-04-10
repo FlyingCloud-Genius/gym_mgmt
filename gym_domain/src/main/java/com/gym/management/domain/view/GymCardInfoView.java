@@ -26,6 +26,8 @@ public class GymCardInfoView {
 
     private Integer membership;
 
+    private Integer cardTotalTime;
+
     private Integer cardRemainTime;
 
     private String createBy;

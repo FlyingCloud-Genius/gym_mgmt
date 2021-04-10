@@ -14,6 +14,4 @@ public class GymCardInfoParam {
     private String name;
 
     private String phoneNum;
-
-    private String nationalId;
 }

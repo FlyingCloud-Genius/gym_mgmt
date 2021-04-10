@@ -53,4 +53,6 @@ public interface GymCardInfoMapper {
      * @mbg.generated 2021-03-21 23:38:04
      */
     int updateByPrimaryKeySelective(GymCardInfo record);
+
+    GymCardInfoEditView selectByPrimaryKeyForView(Long id);
 }

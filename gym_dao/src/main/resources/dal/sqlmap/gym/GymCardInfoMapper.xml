@@ -24,14 +24,15 @@
     <result column="membership_start" jdbcType="TIMESTAMP" property="membershipStart" />
     <result column="membership_end" jdbcType="TIMESTAMP" property="membershipEnd" />
     <result column="membership" jdbcType="TINYINT" property="membership" />
-    <result column="remain_time" jdbcType="INTEGER" property="cardRemainTime" />
+    <result column="total_count" jdbcType="INTEGER" property="cardTotalTime" />
+    <result column="remain_count" jdbcType="INTEGER" property="cardRemainTime" />
     <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
     <result column="update_by" jdbcType="VARCHAR" property="createBy" />
   </resultMap>
 
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, card_id, customer_id, membership_start, membership_end, membership, card_remain_time,
+    id, card_id, customer_id, membership_start, membership_end, membership,
     create_by, created_time, update_by, modified_time, yn, remark
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
@@ -50,7 +51,7 @@
   </select>
 
   <select id="selectBySelectiveForView" parameterType="GymCardInfoParam" resultMap="ViewResultMap">
-    select ci.id, ci.membership_start, ci.membership_end, ci.membership,  ci.card_remain_time, ci.create_by, ci.created_time, u.name, u.phone_num
+    select ci.id, ci.membership_start, ci.membership_end, ci.membership, cc.total_count, cc.remain_count, ci.create_by, ci.created_time, u.name, u.phone_num
     from gym_card_info as ci
     left join gym_user as u on u.id = ci.customer_id
     left join gym_card_class as cc on ci.id = cc.card_id
@@ -58,8 +59,12 @@
     where ci.yn = 1 and u.yn = 1
     <if test="cardId != null and cardId != ''"> and ci.card_id = #{cardId} </if>
     <if test="name != null and name != ''"> and u.name like concat('%', #{name}, '%') </if>
-    <if test="nationalId != null and nationalId != ''"> and u.national_id like concat('%', #{nationalId}, '%') </if>
     <if test="phoneNum != null and phoneNum != ''"> and u.phone_num like concat('%', #{phoneNum}, '%') </if>
+  </select>
+
+  <select id="selectByPrimaryKeyForView" parameterType="Object" resultMap="ViewResultMap">
+    select ci.id, ci.membership_start, ci.membership_end, ci.membership, cc.total_count, cc.remain_count, ci.create_by, ci.created_time, u.name, u.phone_num
+
   </select>
 
   <select id="selectByCardId" parameterType="Object" resultMap="BaseResultMap">
@@ -93,9 +98,6 @@
       </if>
       <if test="membership != null">
         membership,
-      </if>
-      <if test="cardRemainTime != null">
-        card_remain_time,
       </if>
       <if test="createBy != null">
         create_by,
@@ -131,9 +133,6 @@
       </if>
       <if test="membership != null">
         #{membership,jdbcType=TINYINT},
-      </if>
-      <if test="cardRemainTime != null">
-        #{cardRemainTime,jdbcType=INTEGER},
       </if>
       <if test="createBy != null">
         #{createBy,jdbcType=VARCHAR},
@@ -174,9 +173,6 @@
       </if>
       <if test="membership != null">
         membership = #{membership,jdbcType=TINYINT},
-      </if>
-      <if test="cardRemainTime != null">
-        card_remain_time = #{cardRemainTime,jdbcType=INTEGER},
       </if>
       <if test="createBy != null">
         create_by = #{createBy,jdbcType=VARCHAR},

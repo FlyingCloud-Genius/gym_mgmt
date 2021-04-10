@@ -12,8 +12,6 @@
         <div class="row">
             <div class="col-sm-12 search-collapse">
                 <form id="user-form">
-                    <input type="hidden" id="deptId" name="deptId">
-                    <input type="hidden" id="parentId" name="parentId">
                     <div class="select-list">
                         <ul>
                             <li>
@@ -23,7 +21,7 @@
                                 手机号：<input type="text" name="phoneNum"/>
                             </li>
                             <li>
-                                身份证号： <input type="text" name="nationalId"/>
+                                健身卡号： <input type="text" name="cardId"/>
                             </li>
                             <li>
                                 <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;[[#{common.search}]]</a>
@@ -94,8 +92,19 @@
                     title: "姓名"
                 },
                 {
+                    field: 'phoneNum',
+                    title: "手机号"
+                },
+                {
                     field: 'cardId',
                     title: "健身卡卡号"
+                },
+                {
+                    field: 'membership',
+                    title: "卡类型",
+                    formatter: function (value, row, index) {
+                        return $.table.selectDictLabel(cardTypes, value);
+                    }
                 },
                 {
                     field: 'membershipStart',
@@ -106,11 +115,12 @@
                     title: "时间卡失效时间"
                 },
                 {
-                    field: 'membership',
-                    title: "卡类型",
-                    formatter: function (value, row, index) {
-                        return $.table.selectDictLabel(cardTypes, value);
-                    }
+                    field: 'cardTotalTime',
+                    title: "购买次数"
+                },
+                {
+                    field: 'cardRemainTime',
+                    title: "剩余次数"
                 },
                 {
                     field: 'createdTime',

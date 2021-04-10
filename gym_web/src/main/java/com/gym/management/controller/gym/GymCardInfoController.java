@@ -68,7 +68,7 @@ public class GymCardInfoController extends BaseController {
     @RequiresPermissions("gym:card:add")
     @RequestMapping("/edit/{id}")
     public String editPage(@PathVariable("id") Long id, ModelMap modelMap) {
-        modelMap.put("cardInfo", cardInfoMapper.selectByPrimaryKey(id));
+        modelMap.put("cardInfo", cardInfoMapper.selectByPrimaryKeyForView(id));
         return prefix + "/edit";
     }
 
